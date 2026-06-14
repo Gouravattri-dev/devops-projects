@@ -6,33 +6,54 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  PYTHON_VERSION: '3.11'
+  APP_NAME: 'devops-project'
+
 jobs:
-  build:
+  # ─── JOB 1: Test ───
+  test:
+    name: 🧪 Run Tests
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: ${{ env.PYTHON_VERSION }}
 
     - name: Install dependencies
-      run: |
-        pip install django==4.2
+      run: pip install django==4.2
 
     - name: Check Django version
-      run: |
-        python -m django --version
+      run: python -m django --version
 
-    - name: Run Bash script test
+    - name: Run Bash script
       run: |
         chmod +x system_info.sh
         bash system_info.sh
 
-    - name: Success message
+    - name: Print environment info
       run: |
-        echo "CI Pipeline completed successfully!"
-        echo "All checks passed!"
+        echo "App Name: ${{ env.APP_NAME }}"
+        echo "Python: ${{ env.PYTHON_VERSION }}"
+        echo "Runner OS: ${{ runner.os }}"
+        echo "Branch: ${{ github.ref_name }}"
+
+  # ─── JOB 2: Build ───
+  build:
+    name: 🏗️ Build Check
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{
