@@ -29,8 +29,8 @@ jobs:
 
     - name: Run Bash script test
       run: |
-        chmod +x Linux-Script/system_info.sh
-        bash Linux-Script/system_info.sh
+        chmod +x system_info.sh
+        bash system_info.sh
 
     - name: Success message
       run: |
