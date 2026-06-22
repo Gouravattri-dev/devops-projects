@@ -1,0 +1,10 @@
+[Unit]
+Description=Gourav Test Service - DevOps Practice
+
+[Service]
+Type=oneshot
+ExecStart=/home/gourav-attri/Devops-Project/Linux-Script/process_monitor.sh
+StandardOutput=append:/home/gourav-attri/systemd_test_log.txt
+
+[Install]
+WantedBy=multi-user.target

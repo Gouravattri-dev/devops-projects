@@ -1,4 +1,4 @@
-#!/bin/bash
+# Version 2.0 - Updated
 echo "==============================="
 echo "   SYSTEM INFORMATION REPORT"
 echo "==============================="
