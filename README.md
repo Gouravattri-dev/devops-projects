@@ -38,3 +38,10 @@ chmod +x process_monitor.sh
 
 ## 👨‍💻 Author
 **Gourav Attri** - Aspiring DevOps Engineer
+
+## 📁 Project Structure
+## ✅ Prerequisites
+- Linux (Ubuntu 20.04+)
+- Docker & Docker Compose
+- Python 3.x
+- Git
